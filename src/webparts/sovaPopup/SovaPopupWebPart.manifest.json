@@ -1,0 +1,45 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "f451ec92-e668-4296-9dd6-edcc2249a3ac",
+  "alias": "SovaPopupWebPart",
+  "componentType": "WebPart",
+
+  // The "*" signifies that the version should be taken from the package.json
+  "version": "*",
+  "manifestVersion": 2,
+
+  // If true, the component can only be installed on sites where Custom Script is allowed.
+  // Components that allow authors to embed arbitrary script code should set this to true.
+  // https://support.office.com/en-us/article/Turn-scripting-capabilities-on-or-off-1f2c515f-5d7e-448a-9fd7-835da935584f
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart", "TeamsPersonalApp", "TeamsTab", "SharePointFullPage"],
+  "supportsThemeVariants": true,
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Advanced
+    "group": { "default": "Advanced" },
+    "title": { "default": "SovaPopup" },
+    "description": { "default": "Enable popup or form functionality on page" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+		"popupContentType": 1,
+		"HTMLContent": "",
+		"closeButtonCaption": "",
+		"autoShowOnDelay": false,
+		"delaySeconds": "0",
+		"openButtonCaption": "Show popup",
+		"vPos": "2",
+		"hPos": "2",
+		"widthType": 1,
+		"widthPercentage":50,
+		"widthPixels":500,
+		"heightType":1,
+		"heightPercentage":30,
+		"heightPixels":300,
+		"redirectOnClose": false,
+		"redirectURL": "",
+		"rememberUserCloseAction": false,
+		"rememberUserCloseActionMaxN": 1
+    }
+  }]
+}

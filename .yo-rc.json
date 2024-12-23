@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": false,
+    "nodeVersion": "18.20.4",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.24.0"
+    },
+    "version": "1.20.0",
+    "libraryName": "sova-pack",
+    "libraryId": "147d9de7-6607-4b9d-a8d8-de9805662b87",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "SovaPack",
+    "solutionShortDescription": "SovaPack description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "sova-popup-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/sovaPopup/SovaPopupWebPart.js",
+          "manifest": "./src/webparts/sovaPopup/SovaPopupWebPart.manifest.json"
+        }
+      ]
+    },
+    "sova-heading-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/sovaHeading/SovaHeadingWebPart.js",
+          "manifest": "./src/webparts/sovaHeading/SovaHeadingWebPart.manifest.json"
+        }
+      ]
+    },
+    "sova-content-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/sovaContent/SovaContentWebPart.js",
+          "manifest": "./src/webparts/sovaContent/SovaContentWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "SovaPopupWebPartStrings": "lib/webparts/sovaPopup/loc/{locale}.js",
+    "SovaHeadingWebPartStrings": "lib/webparts/sovaHeading/loc/{locale}.js",
+    "SovaContentWebPartStrings": "lib/webparts/sovaContent/loc/{locale}.js",
+    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js"
+  }
+}

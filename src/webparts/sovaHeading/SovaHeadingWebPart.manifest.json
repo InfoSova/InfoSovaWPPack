@@ -1,0 +1,58 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "37dc2ee7-605d-4fca-b704-f99462ba2c51",
+  "alias": "SovaHeadingWebPart",
+  "componentType": "WebPart",
+
+  // The "*" signifies that the version should be taken from the package.json
+  "version": "*",
+  "manifestVersion": 2,
+
+  // If true, the component can only be installed on sites where Custom Script is allowed.
+  // Components that allow authors to embed arbitrary script code should set this to true.
+  // https://support.office.com/en-us/article/Turn-scripting-capabilities-on-or-off-1f2c515f-5d7e-448a-9fd7-835da935584f
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart", "TeamsPersonalApp", "TeamsTab", "SharePointFullPage"],
+  "supportsThemeVariants": true,
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Advanced
+    "group": { "default": "Advanced" },
+    "title": { "default": "SovaHeading" },
+    "description": { "default": "Display heading, caption or title for a column content" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+		"textToDisplay": "",
+		"heightPixels": 0,
+		"contentPaddingVertical":2,
+		"contentPaddingHorizontal":4,
+
+		"showIcon": false,
+		"icon": "",
+		"iconColor": "#000000",
+		"iconSize": "1em",
+
+		"fontSize": "1em",
+		"color": "#000000",
+		"backgroundColor": "#ffffff",
+
+		"bold": false,
+
+		"borderRadius": 2,
+		"borderWidth": "",
+		"borderColor": "#999999",
+
+		"dropShadow": false,
+
+		"separatorStyle": "solid",
+		"separatorWidth": "1px",
+		"separatorColor": "#000000",
+
+		"redirectOnClick": false,
+		"redirectURL": "",
+		"linkHoverUnderline":false,
+		"linkHoverBold":false
+
+    }
+  }]
+}

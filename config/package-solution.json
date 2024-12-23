@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "InfoSovaPackWebPartPackage",
+    "id": "147d9de7-6607-4b9d-a8d8-de9805662b87",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.20.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "Custom web part package"
+      },
+      "longDescription": {
+        "default": "Web part package with web parts that provide additional functionality for SharePoint pages"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "InfoSovaPackWebPartPackage Feature",
+        "description": "The feature that activates elements of the sova-pack solution.",
+        "id": "9259fe1c-97eb-4553-8266-a28cc804157e",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/InfoSovaPackWebPartPackage.sppkg"
+  }
+}

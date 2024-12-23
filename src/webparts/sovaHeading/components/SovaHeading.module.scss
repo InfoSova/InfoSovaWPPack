@@ -1,0 +1,38 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.sovaHeading {
+  overflow: hidden;
+  padding: 1em;
+  color: "[theme:bodyText, default: #323130]";
+  color: var(--bodyText);
+  &.teams {
+    font-family: $ms-font-family-fallbacks;
+  }
+}
+
+.hooDropShadow{
+	box-shadow: 2px 2px 6px 0px rgba(128, 128, 128, 0.80);
+}
+
+.hooHeadingContentContainer{
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	overflow: "hidden",
+}
+
+.hooLinkHoverUnderline:hover{
+	text-decoration: underline !important;
+}
+.hooLinkHoverUnderlineNO:hover{
+	text-decoration: none !important;
+}
+
+.hooLinkHoverBold:hover{
+	font-weight: bold !important;
+}
+.hooLinkHoverBoldNO:hover{
+	font-weight:normal !important;
+}
