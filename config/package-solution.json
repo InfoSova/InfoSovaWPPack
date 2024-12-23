@@ -1,14 +1,14 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
-    "name": "InfoSovaPackWebPartPackage",
+    "name": "InfoSovaWPPack",
     "id": "147d9de7-6607-4b9d-a8d8-de9805662b87",
     "version": "1.0.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
     "developer": {
-      "name": "",
+      "name": "Drazen Pavkovic",
       "websiteUrl": "",
       "privacyUrl": "",
       "termsOfUseUrl": "",
@@ -27,14 +27,14 @@
     },
     "features": [
       {
-        "title": "InfoSovaPackWebPartPackage Feature",
-        "description": "The feature that activates elements of the sova-pack solution.",
+        "title": "InfoSovaWPPack Feature",
+        "description": "The feature that activates elements of the InfoSovaWPPack solution.",
         "id": "9259fe1c-97eb-4553-8266-a28cc804157e",
         "version": "1.0.0.0"
       }
     ]
   },
   "paths": {
-    "zippedPackage": "solution/InfoSovaPackWebPartPackage.sppkg"
+    "zippedPackage": "solution/InfoSovaWPPack.sppkg"
   }
 }
