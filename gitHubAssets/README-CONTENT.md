@@ -2,7 +2,7 @@
 
 Content web part is the most complex in the package.
 
-**For typical users** it provides the ability to display standard elements like greetings, banners and alerts. Page editors can also display HTML content embedded in the page.
+**For typical users** it provides the ability to display standard elements like greetings, banners and alerts.
 
 **For advanced users**, people with HTML and CSS experience can embed custom HTML content on the page. They can embed external HTML content (so-called widgets) provided by external services (stock quotes, weather information, exchange rates...). Advanced users can also user negative margins on the element (although margins are primarily used for manipulating spacing around standard greeting or alert elements). If you are skilled with HTML and CSS you might be able to create some interesting effects.<br/>
 > [!CAUTION]
