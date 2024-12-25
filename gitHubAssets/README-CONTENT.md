@@ -9,8 +9,8 @@ Content web part is the most complex in the package.
 > When you turn on a checkbox **"Shrink web part?"** this web part modifies HTML on the page outside of the web part's context to deal with "margin collapse" and provide better look and feel. Use this option if you know what you are doing.
 
 **You can use negative margin for this element, but should you?**<br/>
-Manipulating an element's margins can move the element where other page elements are located. This could create display issues depending on the content of the page.<br/>
-The answer to the question "Should you use this functionality?" is a counter question "If you are experienced with HTML and CSS and you know what you are doing, why not?".
+Manipulating an element's margins can move the element where other page elements are located. Negative margin is just a negative margin, the only problem that could happen is that the visual result is not what you expect.<br/>
+A typical issue is when you have an automatically resizeable element on which you want to set an overlay. Always try to resize the browser window to see if the visual result is satisfactory.
 
 ## Some of the use cases for this web part
 
