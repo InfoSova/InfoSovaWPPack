@@ -4,7 +4,7 @@ Content web part is the most complex in the package.
 
 **For typical users** it provides the ability to display standard elements like greetings, banners and alerts. Page editors can also display HTML content embedded in the page.
 
-**For advanced users**, people with experience with HTML and CSS who, for example, know what is "margin collapse" in HTML/CSS, this web part allows additional design options by setting the top-margin to a negative value.<br/>
+**For advanced users**, people with HTML and CSS experience can embed custom HTML content on the page. They can embed external HTML content (so-called widgets) provided by external services (stock quotes, weather information, exchange rates...). Advanced users can also user negative margins on the element (although margins are primarily used for manipulating spacing around standard greeting or alert elements). If you are skilled with HTML and CSS you might be able to create some interesting effects.<br/>
 > [!CAUTION]
 > When you turn on a checkbox **"Shrink web part?"** this web part modifies HTML on the page outside of the web part's context to deal with "margin collapse" and provide better look and feel. Use this option if you know what you are doing.
 
@@ -22,7 +22,7 @@ Basic greeting web part that can display current user's display name and current
 Basic alert web part. Notice the 'X', which means that this element is closable. When user closes the element, this action can be remembered, and on the next page load, the alert is not displayed.<br/>
 ![Example 2 of the Content web part](ScreenContent2.png)
 
-**For a typical user**<br/>
+**For an ADVANCED user**<br/>
 Embedding HTML content on the page. HTML content with styles can be directly entered as a parameter of the web part, or the HTML file can be displayed.<br/>
 ![Example 3 of the Content web part](ScreenContent3.png)
 
@@ -34,9 +34,6 @@ You can embed content from other online sites (with limitations).<br/>
 A custom overlay with HTML over an image (top margin modification).<br/>
 ![Example 5 of the Content web part](ScreenContent5.png)
 
-**For an ADVANCED user**<br/>
-A custom design elements with HTML (top margin modification).<br/>
-![Example 6 of the Content web part](ScreenContent6.png)
 
 ## Web part customization
 
