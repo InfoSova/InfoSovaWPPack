@@ -17,10 +17,6 @@ Below you can see two pages that use InfoSova Page header web part.
 </tr>
 </table>
 
-![Example of the Page Header web part 1](ScreenPageHeader1.png)
-
-![Example of the Page Header web part 2](ScreenPageHeader2.png)
-
 The key elements of configuration are:
 - content for page header (HTML displayed in IFRAME)
 - overlay position (left, center, right)
