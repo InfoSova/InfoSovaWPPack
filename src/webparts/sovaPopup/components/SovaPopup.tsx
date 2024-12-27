@@ -148,9 +148,6 @@ export default class SovaPopup extends React.Component<ISovaPopupProps, any> {
 												right: "0px",
 												backgroundColor: "#fff",
 												color: "#ccc"
-												//left: '98%',
-												//top: '9%',
-												//transform: 'translate(-98%, -9%)'*/
 											},
 											rootHovered: {backgroundColor: "#eee"},
 											rootPressed: {backgroundColor: "#ddd"}

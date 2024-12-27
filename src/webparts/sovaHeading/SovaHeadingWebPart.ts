@@ -181,43 +181,6 @@ export default class SovaHeadingWebPart extends BaseClientSideWebPart<ISovaHeadi
 	}
 
  	protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
-		// *****************************************************
-		// SET IMPORTANT INITIAL VALUES IF NOT ALREADY SET
-		// *****************************************************
-
-		if (!this.properties.textToDisplay) this.properties.textToDisplay = "Hello world";
-
-		if (!this.properties.heightPixels) this.properties.heightPixels = 0;
-
-		if (!this.properties.contentPaddingVertical) this.properties.contentPaddingVertical = 2;
-		if (!this.properties.contentPaddingHorizontal) this.properties.contentPaddingVertical = 4;
-		if (!this.properties.marginBottom) this.properties.marginBottom = 4;
-
-		if (!this.properties.showIcon) this.properties.showIcon = false;
-		if (!this.properties.icon) this.properties.icon = "";
-		if (!this.properties.iconColor) this.properties.iconColor = "#000000";
-		if (!this.properties.iconSize) this.properties.iconSize = "1em";
-
-		if (!this.properties.fontSize) this.properties.fontSize = "1em";
-		if (!this.properties.color) this.properties.color = "#000000";
-		if (!this.properties.backgroundColor) this.properties.backgroundColor = "#ffffff";
-
-		if (!this.properties.bold) this.properties.bold = false;
-
-		if (!this.properties.borderRadius) this.properties.borderRadius = 2;
-		if (!this.properties.borderWidth) this.properties.borderWidth = "";
-		if (!this.properties.borderColor) this.properties.borderColor = "#666666";
-
-		if (!this.properties.dropShadow) this.properties.dropShadow = false;
-
-		if (!this.properties.separatorStyle) this.properties.separatorStyle = "solid";
-		if (!this.properties.separatorWidth) this.properties.separatorWidth = "1px";
-		if (!this.properties.separatorColor) this.properties.separatorWidth = "#000000";
-
-		if (!this.properties.redirectOnClick) this.properties.redirectOnClick = false;
-		if (!this.properties.redirectURL) this.properties.redirectURL = "";
-		if (!this.properties.linkHoverUnderline) this.properties.linkHoverUnderline = false;
-		if (!this.properties.linkHoverBold) this.properties.linkHoverBold = false;
 
 		// *****************************************************
 		// CONTENT
@@ -234,6 +197,7 @@ export default class SovaHeadingWebPart extends BaseClientSideWebPart<ISovaHeadi
 			text: "Show icon",
 			checked: this.properties.showIcon
 		}));
+
 		if (this.properties.showIcon){
 			contentGroupFields.push(
 				PropertyFieldIconPicker('icon', {

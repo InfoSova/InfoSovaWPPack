@@ -84,7 +84,7 @@ export default class SovaContentWebPart extends BaseClientSideWebPart<ISovaConte
 		}
 
 		// IF CONTENT SHOULD BE READ FROM A FILE, READ THE CONTENT FROM THE FILE
-		// To execute async calls, the render method is converted to async (not also the isRenderAsync method above)
+		// To execute async calls, the render method is converted to async (note also the isRenderAsync method above)
 		let sContentToDisplay = "";
 		if (this.properties.contentType == 0) {
 			const langCode = document.documentElement.lang || navigator.language;
@@ -225,38 +225,6 @@ export default class SovaContentWebPart extends BaseClientSideWebPart<ISovaConte
 	}
 
 	protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
-
-		// *****************************************************
-		// SET IMPORTANT INITIAL VALUES IF NOT ALREADY SET
-		// *****************************************************
-
-		/*if (!this.properties.contentType) this.properties.contentType = 0;
-		if (!this.properties.plainTextContent) this.properties.plainTextContent = "";
-		if (!this.properties.HTMLContent) this.properties.HTMLContent = "";
-
-		if (!this.properties.heightPixels) this.properties.heightPixels = 0;
-
-		if (!this.properties.contentPadding) this.properties.contentPadding = 2;
-
-		if (!this.properties.showIcon) this.properties.showIcon = false;
-		if (!this.properties.icon) this.properties.icon = "";
-		if (!this.properties.iconColor) this.properties.iconColor = "#000000";
-		if (!this.properties.iconSize) this.properties.iconSize = "1em";
-
-		if (!this.properties.fontSize) this.properties.fontSize = "1em";
-		if (!this.properties.color) this.properties.color = "#000000";
-		if (!this.properties.backgroundColor) this.properties.backgroundColor = "#ffffff";
-
-		if (!this.properties.borderRadius) this.properties.borderRadius = 2;
-		if (!this.properties.borderWidth) this.properties.borderWidth = "";
-		if (!this.properties.borderColor) this.properties.borderColor = "#666666";
-		if (!this.properties.dropShadow) this.properties.dropShadow = false;
-
-		if (!this.properties.xShow) this.properties.xShow = false;
-		if (!this.properties.xColor) this.properties.xColor = "#000000";
-
-		if (!this.properties.rememberUserCloseAction) this.properties.rememberUserCloseAction = false;
-		if (!this.properties.rememberUserCloseActionMaxN) this.properties.rememberUserCloseActionMaxN = 0;*/
 
 		// *****************************************************
 		// CONTENT
