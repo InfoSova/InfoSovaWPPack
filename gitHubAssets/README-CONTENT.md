@@ -6,7 +6,7 @@ Content web part is the most complex in the package.
 
 **For advanced users**, people with HTML and CSS experience can embed custom HTML content on the page. They can embed external HTML content (so-called widgets) provided by external services (stock quotes, weather information, exchange rates...).<br/>
 > [!CAUTION]
-> When you turn on a checkbox **"Shrink web part?"** this web part modifies HTML on the page outside of the web part's context to deal with "margin collapse" and provide better look and feel. Use this option if you know what you are doing.
+> When you turn on a checkbox **"Shrink web part?"** this web part modifies HTML on the page outside of the web part's context to deal with "margin collapse" and provide better look and feel.
 
 ## Some of the use cases for this web part
 
