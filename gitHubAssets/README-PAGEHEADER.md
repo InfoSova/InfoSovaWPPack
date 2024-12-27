@@ -8,10 +8,10 @@ Web part mimics the behavior of standard banner web part, so the overlay follows
 Below you can see two pages that use InfoSova Page header web part.
 
 <table>
-<tr><td style="padding:10px">
+<tr><td style="padding:10px;border:none;">
 <img src= "ScreenPageHeader1.png" alt="Example of the Page Header web part 1" style="border: 2px solid grey;">
 </td>
-<td style="padding:10px">
+<td style="padding:10px;border:none;">
 <img src= "ScreenPageHeader2.png" alt="Example of the Page Header web part 2" style="border: 2px solid grey;">
 </td>
 </tr>
