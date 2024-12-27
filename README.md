@@ -23,18 +23,20 @@ The following web parts are included in the solution:
 - **Content** - this web part can be used for many different things. It can be used to display greetings, alerts, HTML content and even provide you with interesting design solutions ([READ MORE](gitHubAssets/README-CONTENT.md))
 
 The following image illustrates the usage of available web parts on a page.
-The page below is not the prettiest out there, but you can see the most common scenarios in which these web parts can be used.
+The page below is not the prettiest out there (actually a total visual mess), but you can see the most common scenarios in which these web parts can be used.
 
 ![Page that displays web parts in action](gitHubAssets/ScreenWhole.png)
 
+Top:
+- **Page header web part** that can use color background or image, and displays custom HTML content.
+
 Left column:
-- **Content web part** that serves as a **closable alert**.
 - **Content web part** that serves as a **greeting web part**.
-- Standard SharePoint image web part with standard overlay text. Additional overlay text was created with **Content web part**.
+- **Content web part** that serves as a **closable alert**.
+- **Content web part** that serves as a **closable alert** with custom HTML content.
 - Three content columns that use **Heading web part**.
 
 Right column:
-- **Heading web part**, followed by a standard SharePoint quick links web part.
 - "Show terms of use" button that opens a **popup** on user's click action.
 - **Content web part** that displays custom HTML.
 - **Content web part** that encapsulates content provided by an external service.
