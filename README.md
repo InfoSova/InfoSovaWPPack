@@ -2,13 +2,13 @@
 
 InfoSova Web Part pack contains several SPFx web parts that can help you in designing your SharePoint Online pages.<br/>
 This package is distributed with MIT license which means, in short, you can freely use these web parts, but no warranty of any kind is provided.
-Check [LICENSE](https://github.com/DrazenInfoSova/InfoSovaWebPartPack/blob/main/LICENSE) for more information.
+Check [LICENSE](LICENSE) for more information.
 
 General technical information is available [HERE](gitHubAssets/README-TECHNICAL.md).
 
 ## How to get this web part package
 
-To use this package you can download the [SPPKG file](https://github.com/DrazenInfoSova/InfoSovaWebPartPack/blob/main/sharepoint/solution/InfoSovaPackWebPartPackage.sppkg).<br/>
+To use this package you can download the [SPPKG file](sharepoint/solution/InfoSovaPackWebPartPackage.sppkg).<br/>
 You can also build the package yourself, since the entire source code is available here.
 In that case, you probably know how to work with SPFx solutions, but here are some links with some info:
 - [Set up your SharePoint Framework development environment](https://learn.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment)
