@@ -34,7 +34,7 @@ Left column:
 - **Content web part** that serves as a **greeting web part**.
 - **Content web part** that serves as a **closable alert**.
 - **Content web part** that serves as a **closable alert** with custom HTML content.
-- Three content columns that use **Heading web part**.
+- Three content columns that use **Heading web part** (Compensation, Career, Benefits).
 
 Right column:
 - "Show terms of use" button that opens a **popup** on user's click action.
