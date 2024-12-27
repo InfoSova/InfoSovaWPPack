@@ -3,7 +3,7 @@
 Page header web part allows you to customize your title area on the page.<br/>
 You can use image as background or plain color background.<br/>
 You can style the overlay and position it on the left, in the center or on the right side of the page.<br/>
-Web part mimics the behavior of standard banner web part, so the overlay follows the content of the page.
+Web part mimics the behavior of standard banner web part, so the overlay should follow the content of the page.
 
 Below you can see two pages that use InfoSova Page header web part.
 
