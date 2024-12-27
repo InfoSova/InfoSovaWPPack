@@ -97,7 +97,8 @@ export default class SovaContent extends React.Component<ISovaContentProps, any>
 			"width": sWidth,
 			"marginTop": this.props.marginTop,
 			"marginLeft": this.props.marginLeft,
-			"marginBottom": this.props.marginBottom
+			"marginBottom": this.props.marginBottom,
+			"min-width": "200px"
 		};
 		if (this.props.heightPixels > 0) bannerDivStyle["height"] = sHeight;
 		if (this.props.zIndex > 0) bannerDivStyle["zIndex"] = this.props.zIndex;
@@ -124,16 +125,18 @@ export default class SovaContent extends React.Component<ISovaContentProps, any>
 				{this.props.isEditMode?<div>[SovaContentWebPart]</div>:""}
 				{this.state.isElementVisible?
 					<div className={this.props.dropShadow?styles.hooDropShadow:""} style={bannerDivStyle}>
-						<div style={{width:"100%", height:"100%", position:"relative"}}>
+						<div style={{width:"100%", height:"100%", position:"relative", overflow:"hidden"}}>
 
 							{showIFrame?
-								<iframe sandbox='allow-scripts allow-top-navigation-by-user-activation' srcDoc={"<style>body {color:" + this.props.color + ";}</style>" + this.props.contentToDisplay} className={styles.hooIFrame} />:""
+								<div style={{width:"100%", height:"100%", position:"relative", boxSizing: "border-box", paddingRight:(this.props.xShow?"24px":"0")}}>
+									<iframe sandbox='allow-scripts allow-top-navigation-by-user-activation' srcDoc={"<style>body {color:" + this.props.color + ";}</style>" + this.props.contentToDisplay} className={styles.hooIFrame} />
+								</div>:""
 							}
 							{!showIFrame && !this.props.showIcon?
-								<div>{this.props.contentToDisplay}</div>:""
+								<div style={{paddingRight:(this.props.xShow?"24px":"0")}}>{this.props.contentToDisplay}</div>:""
 							}
 							{!showIFrame && this.props.showIcon?
-								<div style={{display:"flex", alignItems:"center"}}>
+								<div style={{display:"flex", alignItems:"center",paddingRight:(this.props.xShow?"24px":"0")}}>
 									<div style={{display:"flex"}}><FontIcon iconName={this.props.iconName} style={{color: this.props.iconColor, fontSize: this.props.iconSize}} /></div>
 									<div style={{paddingLeft:"8px",display:"inline-block"}}>{this.props.contentToDisplay}</div>
 								</div>
@@ -147,7 +150,7 @@ export default class SovaContent extends React.Component<ISovaContentProps, any>
 									position: 'absolute',
 									width: 12,
 									height: 12,
-									right: '12px',
+									right: '8px',
 									top: '50%',
 									color: this.props.xColor,
 									transform: 'translate(0%, -50%)'

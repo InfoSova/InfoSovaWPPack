@@ -21,31 +21,35 @@ import { Environment, EnvironmentType, DisplayMode } from '@microsoft/sp-core-li
 import { SPHttpClient, SPHttpClientResponse } from '@microsoft/sp-http';
 import { escape } from '@microsoft/sp-lodash-subset';
 
-import * as strings from 'SovaImageWebPartStrings';
-import SovaImage from './components/SovaImage';
-import { ISovaImageProps } from './components/ISovaImageProps';
+import * as strings from 'SovaPageHeaderWebPartStrings';
+import SovaPageHeader from './components/SovaPageHeader';
+import { ISovaPageHeaderProps } from './components/ISovaPageHeaderProps';
 
-export interface ISovaImageWebPartProps {
+export interface ISovaPageHeaderWebPartProps {
 	ImageFilePickerResult: IFilePickerResult,
 
-	positionType: number,
-
+	backgroundType:number,
 	withVerticalSection: boolean,
 
+	overlayPosition: number,
+
 	imageWidthType: number,
-	imageWidthPixels: number,
 	imageWidthPercentage: number,
+	imageWidthPixels: number,
 	imageHeightType: number,
-	imageHeightPixels: number,
 	imageHeightPercentage: number,
+	imageHeightPixels: number,
 
 	imageMinWidthType: number,
-	imageMinWidthPixels: number,
 	imageMinWidthPercentage: number,
+	imageMinWidthPixels: number,
 	imageMinHeightType: number,
-	imageMinHeightPixels: number,
 	imageMinHeightPercentage: number,
+	imageMinHeightPixels: number,
 
+	paddingTop: number,
+	paddingLeft: number,
+	paddingRight: number,
 
 	overlayWidthType: number,
 	overlayWidthPixels: number,
@@ -61,21 +65,9 @@ export interface ISovaImageWebPartProps {
 	overlayMinHeightPixels: number,
 	overlayMinHeightPercentage: number,
 
-
-	overlayTopType: number,			// 0 = none, 1 = pixels, 2 = percentage
-	overlayTopPixels: number,
-	overlayTopPercentage: number,
-	overlayLeftType: number,
-	overlayLeftPixels: number,
-	overlayLeftPercentage: number,
-	overlayRightType: number,
-	overlayRightPixels: number,
-	overlayRightPercentage: number,
-	overlayBottomType: number,
-	overlayBottomPixels: number,
-	overlayBottomPercentage: number,
-
 	backgroundColor: string,
+
+	overlayBackgroundColor: string,
 	borderRadius: number,
 
 	HTMLContentToDisplay: string,
@@ -91,23 +83,46 @@ export interface ISovaImageWebPartProps {
 	domElement: any
 }
 
-export default class SovaImageWebPart extends BaseClientSideWebPart<ISovaImageWebPartProps> {
+export default class SovaPageHeaderWebPart extends BaseClientSideWebPart<ISovaPageHeaderWebPartProps> {
 
 	private _isDarkTheme: boolean = false;
 	private _environmentMessage: string = '';
 	private _isInEditMode: boolean = false;
 
-	public render(): void {
+	protected get isRenderAsync(): boolean {
+		return true;
+	}
+
+	public async render(): Promise<void> {
 		if(Environment.type == EnvironmentType.SharePoint){
 			if(this.displayMode == DisplayMode.Edit) this._isInEditMode = true;
 		}
 
-		const wpProperties:ISovaImageProps = {
+		// get page title from page list item properties
+		let sHTMLContentToDisplay = this.properties.HTMLContentToDisplay;
+		let currentWebUrl = this.context.pageContext.web.absoluteUrl;
+		if (this.context.pageContext.list && this.context.pageContext.list.title && this.context.pageContext.list.title != "" && this.context.pageContext.listItem){
+			let requestUrl = currentWebUrl.concat("/_api/web/Lists/GetByTitle('" + this.context.pageContext.list?.title + "')/items(" + this.context.pageContext.listItem?.id + ")");
+			try{
+				let res:SPHttpClientResponse = await this.context.spHttpClient.get(requestUrl, SPHttpClient.configurations.v1);
+				if (res.ok){
+					let tempResponse = await res.json();
+					sHTMLContentToDisplay = sHTMLContentToDisplay.replace("%%PAGETITLE%%", tempResponse.Title)
+				}else {
+					console.log("WEBPART ERROR: Error loading current page information");
+				}
+			}catch{
+				console.log("WEBPART ERROR: General error notification while loading current page information");
+			}
+		}else console.log("WEBPART ERROR: Page elements are undefined");
+
+		const wpProperties:ISovaPageHeaderProps = {
 			imageUrl: (this.properties.ImageFilePickerResult && this.properties.ImageFilePickerResult.fileAbsoluteUrl)?this.properties.ImageFilePickerResult.fileAbsoluteUrl:"",
 
-			positionType: this.properties.positionType,
-
+			backgroundType: this.properties.backgroundType,
 			withVerticalSection: this.properties.withVerticalSection,
+
+			overlayPosition: this.properties.overlayPosition,
 
 			imageWidthType: this.properties.imageWidthType,
 			imageWidthPixels: this.properties.imageWidthPixels,
@@ -123,6 +138,9 @@ export default class SovaImageWebPart extends BaseClientSideWebPart<ISovaImageWe
 			imageMinHeightPixels: this.properties.imageMinHeightPixels,
 			imageMinHeightPercentage: this.properties.imageMinHeightPercentage,
 
+			paddingTop: this.properties.paddingTop,
+			paddingLeft: this.properties.paddingLeft,
+			paddingRight: this.properties.paddingRight,
 
 			overlayWidthType: this.properties.overlayWidthType,
 			overlayWidthPixels: this.properties.overlayWidthPixels,
@@ -138,24 +156,12 @@ export default class SovaImageWebPart extends BaseClientSideWebPart<ISovaImageWe
 			overlayMinHeightPixels: this.properties.overlayMinHeightPixels,
 			overlayMinHeightPercentage: this.properties.overlayMinHeightPercentage,
 
-
-			overlayTopType: this.properties.overlayTopType,			// 0 = none, 1 = pixels, 2 = percentage
-			overlayTopPixels: this.properties.overlayTopPixels,
-			overlayTopPercentage: this.properties.overlayTopPercentage,
-			overlayLeftType: this.properties.overlayLeftType,
-			overlayLeftPixels: this.properties.overlayLeftPixels,
-			overlayLeftPercentage: this.properties.overlayLeftPercentage,
-			overlayRightType: this.properties.overlayRightType,
-			overlayRightPixels: this.properties.overlayRightPixels,
-			overlayRightPercentage: this.properties.overlayRightPercentage,
-			overlayBottomType: this.properties.overlayBottomType,
-			overlayBottomPixels: this.properties.overlayBottomPixels,
-			overlayBottomPercentage: this.properties.overlayBottomPercentage,
-
 			backgroundColor: this.properties.backgroundColor,
+
+			overlayBackgroundColor: this.properties.overlayBackgroundColor,
 			borderRadius: this.properties.borderRadius,
 
-			HTMLContentToDisplay: this.properties.HTMLContentToDisplay,
+			HTMLContentToDisplay: sHTMLContentToDisplay,
 
 			webPartId: this.context.instanceId,
 			context: this.context,
@@ -168,8 +174,9 @@ export default class SovaImageWebPart extends BaseClientSideWebPart<ISovaImageWe
 			domElement: this.domElement
 		};
 
-		const element: React.ReactElement<ISovaImageProps> = React.createElement(SovaImage, wpProperties, null);
+		const element: React.ReactElement<ISovaPageHeaderProps> = React.createElement(SovaPageHeader, wpProperties, null);
 		ReactDom.render(element, this.domElement);
+		this.renderCompleted();
 	}
 
 	protected onInit(): Promise<void> {
@@ -177,6 +184,7 @@ export default class SovaImageWebPart extends BaseClientSideWebPart<ISovaImageWe
 			this._environmentMessage = message;
 		});
 	}
+
 	private _getEnvironmentMessage(): Promise<string> {
 		if (!!this.context.sdks.microsoftTeams) { // running in Teams, office.com or Outlook
 			return this.context.sdks.microsoftTeams.teamsJs.app.getContext()
@@ -203,6 +211,7 @@ export default class SovaImageWebPart extends BaseClientSideWebPart<ISovaImageWe
 
 		return Promise.resolve(this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentSharePoint : strings.AppSharePointEnvironment);
 	}
+
 	protected onThemeChanged(currentTheme: IReadonlyTheme | undefined): void {
 		if (!currentTheme) {
 			return;
@@ -219,55 +228,83 @@ export default class SovaImageWebPart extends BaseClientSideWebPart<ISovaImageWe
 			this.domElement.style.setProperty('--linkHovered', semanticColors.linkHovered || null);
 		}
 	}
+
 	protected onDispose(): void {
 		ReactDom.unmountComponentAtNode(this.domElement);
 	}
+
 	protected get dataVersion(): Version {
 		return Version.parse('1.0');
 	}
 
 	protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
-
 		const basicGroupFields: IPropertyPaneGroup["groupFields"] = [
-			PropertyFieldFilePicker('filePicker', {
-				context: this.context,
-				accepts:[".jpg", ".png", ".jpeg", ".gif"],
-				hideStockImages: false,
-				hideLocalUploadTab: false,
-				hideOrganisationalAssetTab: false,
-				filePickerResult: this.properties.ImageFilePickerResult,
-				onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
-				properties: this.properties,
-				onSave: (e: IFilePickerResult) => {
-					//console.log(e);
-					this.properties.ImageFilePickerResult = e;  },
-				onChanged: (e: IFilePickerResult) => {
-					//console.log(e);
-					this.properties.ImageFilePickerResult = e; },
-				key: "filePickerId",
-				buttonLabel: "Choose image",
-				label: "Image to display"
-			}),
 			PropertyPaneTextField('HTMLContentToDisplay', {
 				label: "HTML content (IFRAME)",
 				multiline: true,
 				rows:16,
 				value: this.properties.HTMLContentToDisplay
 			}),
-			PropertyPaneDropdown('positionType', {
-				label: "Position type",
+			PropertyPaneDropdown('overlayPosition', {
+				label: "Overlay position",
 				options: [
-					{key: 0, text: "Top header"},
-					{key: 1, text: "Inside content"}
+					{key: 0, text: "Left"},
+					{key: 1, text: "Center"},
+					{key: 2, text: "Right"}
 				],
-				selectedKey: this.properties.positionType
-			})
-		];
-		if (this.properties.positionType == 0){
-			basicGroupFields.push(PropertyPaneCheckbox("withVerticalSection", {
+				selectedKey: this.properties.overlayPosition
+			}),
+			PropertyPaneCheckbox("withVerticalSection", {
 				text: "With vertical section?",
 				checked: this.properties.withVerticalSection
-			}));
+			}),
+			PropertyPaneDropdown('backgroundType', {
+				label: "Background type",
+				options: [
+					{key: 0, text: "Image"},
+					{key: 1, text: "Color"}
+				],
+				selectedKey: this.properties.backgroundType
+			})
+		];
+
+		// image background
+		if (this.properties.backgroundType == 0){
+			basicGroupFields.push(
+				PropertyFieldFilePicker('filePicker', {
+					context: this.context,
+					accepts:[".jpg", ".png", ".jpeg", ".gif"],
+					hideStockImages: false,
+					hideLocalUploadTab: false,
+					hideOrganisationalAssetTab: false,
+					filePickerResult: this.properties.ImageFilePickerResult,
+					onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
+					properties: this.properties,
+					onSave: (e: IFilePickerResult) => {
+						//console.log(e);
+						this.properties.ImageFilePickerResult = e;  },
+					onChanged: (e: IFilePickerResult) => {
+						//console.log(e);
+						this.properties.ImageFilePickerResult = e; },
+					key: "filePickerId",
+					buttonLabel: "Choose image",
+					label: "Image to display"
+				})
+			);
+
+		}
+		// image bg color
+		if (this.properties.backgroundType == 1){
+			basicGroupFields.push(
+				PropertyFieldColorPicker("backgroundColor", {
+					label: "Header background color",
+					selectedColor: this.properties.backgroundColor,
+					onPropertyChange: this.onPropertyPaneFieldChanged,
+					properties: this.properties,
+					showPreview: true,
+					key: "basicUsage"
+				})
+			);
 		}
 
 		/****************************************************************/
@@ -322,7 +359,7 @@ export default class SovaImageWebPart extends BaseClientSideWebPart<ISovaImageWe
 				step:5
 			}));
 		if (this.properties.imageHeightType == 2) imageDimGroupFields.push(
-			PropertyFieldNumber('imageWidthPixels',{
+			PropertyFieldNumber('imageHeightPixels',{
 				key: "imageHeightPixels",
 				label: "Height (pixels)",
 				value: this.properties.imageHeightPixels,
@@ -386,6 +423,36 @@ export default class SovaImageWebPart extends BaseClientSideWebPart<ISovaImageWe
 				minValue: 10,
 				maxValue: 1000
 			}));
+
+		/****************************************************************/
+		/* PADDING 			  											*/
+		/****************************************************************/
+		const paddingGroupFields: IPropertyPaneGroup["groupFields"] = [
+			PropertyPaneSlider('paddingTop',{
+				label: "Padding top",
+				min:0,
+				max:50,
+				value:this.properties.paddingTop,
+				showValue:true,
+				step:1
+			}),
+			PropertyPaneSlider('paddingLeft',{
+				label: "Padding left (default = 32)",
+				min:0,
+				max:50,
+				value:this.properties.paddingLeft,
+				showValue:true,
+				step:1
+			}),
+			PropertyPaneSlider('paddingRight',{
+				label: "Padding right (default = 32)",
+				min:0,
+				max:50,
+				value:this.properties.paddingRight,
+				showValue:true,
+				step:1
+			})
+		];
 
 		/****************************************************************/
 		/* OVERLAY DIMENSIONS  											*/
@@ -504,127 +571,12 @@ export default class SovaImageWebPart extends BaseClientSideWebPart<ISovaImageWe
 			}));
 
 		/****************************************************************/
-		/* OVERLAY POSITION  											*/
-		/****************************************************************/
-		const overlayPosGroupFields: IPropertyPaneGroup["groupFields"] = [
-			PropertyPaneDropdown('overlayTopType', {
-				label: "Overlay top type",
-				options: [
-					{key: 0, text: "None"},
-					{key: 1, text: "Percentage"},
-					{key: 2, text: "Pixels"}
-				],
-				selectedKey: this.properties.overlayTopType
-			})];
-		if (this.properties.overlayTopType == 1) overlayPosGroupFields.push(
-			PropertyPaneSlider('overlayTopPercentage',{
-				label: "Top (percentage)",
-				min:10,
-				max:100,
-				value:this.properties.overlayTopPercentage,
-				showValue:true,
-				step:5
-			}));
-		if (this.properties.overlayTopType == 2) overlayPosGroupFields.push(
-			PropertyFieldNumber('overlayTopPixels',{
-				key: "overlayTopPixels",
-				label: "Top  (pixels)",
-				value: this.properties.overlayTopPixels,
-				minValue: 10,
-				maxValue: 1000
-			}));
-
-		overlayPosGroupFields.push(
-			PropertyPaneDropdown('overlayLeftType', {
-				label: "Overlay left type",
-				options: [
-					{key: 0, text: "None"},
-					{key: 1, text: "Percentage"},
-					{key: 2, text: "Pixels"}
-				],
-				selectedKey: this.properties.overlayLeftType
-			}));
-		if (this.properties.overlayLeftType == 1) overlayPosGroupFields.push(
-			PropertyPaneSlider('overlayLeftPercentage',{
-				label: "Left (percentage)",
-				min:10,
-				max:100,
-				value:this.properties.overlayLeftPercentage,
-				showValue:true,
-				step:5
-			}));
-		if (this.properties.overlayLeftType == 2) overlayPosGroupFields.push(
-			PropertyFieldNumber('overlayLeftPixels',{
-				key: "overlayLeftPixels",
-				label: "Left (pixels)",
-				value: this.properties.overlayLeftPixels,
-				minValue: 10,
-				maxValue: 1000
-			}));
-
-		overlayPosGroupFields.push(
-			PropertyPaneDropdown('overlayRightType', {
-				label: "Overlay right type",
-				options: [
-					{key: 0, text: "None"},
-					{key: 1, text: "Percentage"},
-					{key: 2, text: "Pixels"}
-				],
-				selectedKey: this.properties.overlayRightType
-			}));
-		if (this.properties.overlayRightType == 1) overlayPosGroupFields.push(
-			PropertyPaneSlider('overlayRightPercentage',{
-				label: "Right (percentage)",
-				min:10,
-				max:100,
-				value:this.properties.overlayRightPercentage,
-				showValue:true,
-				step:5
-			}));
-		if (this.properties.overlayRightType == 2) overlayPosGroupFields.push(
-			PropertyFieldNumber('overlayRightPixels',{
-				key: "overlayRightPixels",
-				label: "Right (pixels)",
-				value: this.properties.overlayRightPixels,
-				minValue: 10,
-				maxValue: 1000
-			}));
-
-		overlayPosGroupFields.push(
-			PropertyPaneDropdown('overlayBottomType', {
-				label: "Overlay bottom type",
-				options: [
-					{key: 0, text: "None"},
-					{key: 1, text: "Percentage"},
-					{key: 2, text: "Pixels"}
-				],
-				selectedKey: this.properties.overlayBottomType
-			}));
-		if (this.properties.overlayBottomType == 1) overlayPosGroupFields.push(
-			PropertyPaneSlider('overlayBottomPercentage',{
-				label: "Bottom (percentage)",
-				min:10,
-				max:100,
-				value:this.properties.overlayBottomPercentage,
-				showValue:true,
-				step:5
-			}));
-		if (this.properties.overlayBottomType == 2) overlayPosGroupFields.push(
-			PropertyFieldNumber('overlayBottomPixels',{
-				key: "overlayBottomPixels",
-				label: "Bottom (pixels)",
-				value: this.properties.overlayBottomPixels,
-				minValue: 10,
-				maxValue: 1000
-			}));
-
-		/****************************************************************/
 		/* OVERLAY STYLE  												*/
 		/****************************************************************/
 		const overlayStyleGroupFields: IPropertyPaneGroup["groupFields"] = [
-			PropertyFieldColorPicker("backgroundColor", {
+			PropertyFieldColorPicker("overlayBackgroundColor", {
 				label: "Overlay background color",
-				selectedColor: this.properties.backgroundColor,
+				selectedColor: this.properties.overlayBackgroundColor,
 				onPropertyChange: this.onPropertyPaneFieldChanged,
 				properties: this.properties,
 				showPreview: true,
@@ -641,76 +593,42 @@ export default class SovaImageWebPart extends BaseClientSideWebPart<ISovaImageWe
 		];
 
 
-		if (this.properties.positionType == 0){
-			return {
-				pages: [
-				{
-					header: {
-						description: "Please configure the web part"
+		return {
+			pages: [
+			{
+				header: {
+					description: "Please configure the web part"
+				},
+				displayGroupsAsAccordion: true,
+				groups: [
+					{
+						groupName: "Basic settings",
+						isCollapsed: true,
+						groupFields: basicGroupFields
 					},
-					displayGroupsAsAccordion: true,
-					groups: [
-						{
-							groupName: "Basic settings",
-							isCollapsed: true,
-							groupFields: basicGroupFields
-						},
-						{
-							groupName: "Image dimensions",
-							isCollapsed: true,
-							groupFields: imageDimGroupFields
-						},
-						{
-							groupName: "Overlay dimensions",
-							isCollapsed: true,
-							groupFields: overlayDimGroupFields
-						},
-						{
-							groupName: "Overlay style",
-							isCollapsed: true,
-							groupFields: overlayStyleGroupFields
-						}
-					]
-				}
-				]
-			};
-		}else
-			return {
-				pages: [
-				{
-					header: {
-						description: "Please configure the web part"
+					{
+						groupName: "Image dimensions",
+						isCollapsed: true,
+						groupFields: imageDimGroupFields
 					},
-					displayGroupsAsAccordion: true,
-					groups: [
-						{
-							groupName: "Basic settings",
-							isCollapsed: true,
-							groupFields: basicGroupFields
-						},
-						{
-							groupName: "Image dimensions",
-							isCollapsed: true,
-							groupFields: imageDimGroupFields
-						},
-						{
-							groupName: "Overlay dimensions",
-							isCollapsed: true,
-							groupFields: overlayDimGroupFields
-						},
-						{
-							groupName: "Overlay position",
-							isCollapsed: true,
-							groupFields: overlayPosGroupFields
-						},
-						{
-							groupName: "Overlay style",
-							isCollapsed: true,
-							groupFields: overlayStyleGroupFields
-						}
-					]
-				}
+					{
+						groupName: "Padding",
+						isCollapsed: true,
+						groupFields: paddingGroupFields
+					},
+					{
+						groupName: "Overlay dimensions",
+						isCollapsed: true,
+						groupFields: overlayDimGroupFields
+					},
+					{
+						groupName: "Overlay style",
+						isCollapsed: true,
+						groupFields: overlayStyleGroupFields
+					}
 				]
-			};
+			}
+			]
+		};
 	}
 }

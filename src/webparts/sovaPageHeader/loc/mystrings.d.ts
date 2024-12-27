@@ -1,4 +1,4 @@
-declare interface ISovaImageWebPartStrings {
+declare interface ISovaPageHeaderWebPartStrings {
   PropertyPaneDescription: string;
   BasicGroupName: string;
   DescriptionFieldLabel: string;
@@ -13,7 +13,7 @@ declare interface ISovaImageWebPartStrings {
   UnknownEnvironment: string;
 }
 
-declare module 'SovaImageWebPartStrings' {
-  const strings: ISovaImageWebPartStrings;
+declare module 'SovaPageHeaderWebPartStrings' {
+  const strings: ISovaPageHeaderWebPartStrings;
   export = strings;
 }

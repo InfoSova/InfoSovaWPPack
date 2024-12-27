@@ -1,6 +1,6 @@
 @import '~@fluentui/react/dist/sass/References.scss';
 
-.sovaImage {
+.sovaPageHeader {
   overflow: hidden;
   padding: 1em;
   color: "[theme:bodyText, default: #323130]";
@@ -24,14 +24,12 @@
 		margin-left: auto;
 		margin-right: auto;
 		justify-content: center;
-		/*padding-top:30px;*/
 	}
 	.overLayPositionWithVerticalSection{
 	    max-width: 1579px;
 		margin-left: auto;
 		margin-right: auto;
 		justify-content: center;
-		/*padding-top:30px;*/
 	}
 }
 
@@ -41,18 +39,12 @@
 		margin-left: auto;
 		margin-right: auto;
 		justify-content: center;
-		/*padding-top:30px;
-		padding-left:30px;
-		padding-right:30px;*/
 	}
 	.overLayPositionWithVerticalSection{
 	    max-width: 1236px;
 		margin-left: auto;
 		margin-right: auto;
 		justify-content: center;
-		/*padding-top:30px;
-		padding-left:30px;
-		padding-right:30px;*/
 	}
 }
 
@@ -62,17 +54,11 @@
 		margin-left: auto;
 		margin-right: auto;
 		justify-content: center;
-		/*padding-top:30px;
-		padding-left:30px;
-		padding-right:30px;*/
 	}
 	.overLayPositionWithVerticalSection{
 	    max-width: 100%;
 		margin-left: auto;
 		margin-right: auto;
 		justify-content: center;
-		/*padding-top:30px;
-		padding-left:30px;
-		padding-right:30px;*/
 	}
 }

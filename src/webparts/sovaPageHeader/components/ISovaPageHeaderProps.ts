@@ -1,9 +1,10 @@
-export interface ISovaImageProps {
+export interface ISovaPageHeaderProps {
 	imageUrl: string,
 
-	positionType: number,
-
+	backgroundType:number,
 	withVerticalSection: boolean,
+
+	overlayPosition: number,
 
 	imageWidthType: number,
 	imageWidthPixels: number,
@@ -19,6 +20,9 @@ export interface ISovaImageProps {
 	imageMinHeightPixels: number,
 	imageMinHeightPercentage: number,
 
+	paddingTop: number,
+	paddingLeft:number,
+	paddingRight:number,
 
 	overlayWidthType: number,
 	overlayWidthPixels: number,
@@ -34,21 +38,9 @@ export interface ISovaImageProps {
 	overlayMinHeightPixels: number,
 	overlayMinHeightPercentage: number,
 
-
-	overlayTopType: number,			// 0 = none, 1 = pixels, 2 = percentage
-	overlayTopPixels: number,
-	overlayTopPercentage: number,
-	overlayLeftType: number,
-	overlayLeftPixels: number,
-	overlayLeftPercentage: number,
-	overlayRightType: number,
-	overlayRightPixels: number,
-	overlayRightPercentage: number,
-	overlayBottomType: number,
-	overlayBottomPixels: number,
-	overlayBottomPercentage: number,
-
 	backgroundColor: string,
+
+	overlayBackgroundColor: string,
 	borderRadius: number,
 
 	HTMLContentToDisplay: string,

@@ -26,11 +26,11 @@
         }
       ]
     },
-    "sova-image-web-part": {
+    "sova-page-header-web-part": {
       "components": [
         {
-          "entrypoint": "./lib/webparts/sovaImage/SovaImageWebPart.js",
-          "manifest": "./src/webparts/sovaImage/SovaImageWebPart.manifest.json"
+          "entrypoint": "./lib/webparts/sovaPageHeader/SovaPageHeaderWebPart.js",
+          "manifest": "./src/webparts/sovaPageHeader/SovaPageHeaderWebPart.manifest.json"
         }
       ]
     }
@@ -41,6 +41,6 @@
     "SovaHeadingWebPartStrings": "lib/webparts/sovaHeading/loc/{locale}.js",
     "SovaContentWebPartStrings": "lib/webparts/sovaContent/loc/{locale}.js",
     "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js",
-    "SovaImageWebPartStrings": "lib/webparts/sovaImage/loc/{locale}.js"
+    "SovaPageHeaderWebPartStrings": "lib/webparts/sovaPageHeader/loc/{locale}.js"
   }
 }

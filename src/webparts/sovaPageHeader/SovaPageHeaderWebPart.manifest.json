@@ -1,0 +1,68 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "82c91372-8868-44ab-a817-5ad89c448b2a",
+  "alias": "SovaPageHeaderWebPart",
+  "componentType": "WebPart",
+
+  // The "*" signifies that the version should be taken from the package.json
+  "version": "*",
+  "manifestVersion": 2,
+  "supportsFullBleed": true,
+
+  // If true, the component can only be installed on sites where Custom Script is allowed.
+  // Components that allow authors to embed arbitrary script code should set this to true.
+  // https://support.office.com/en-us/article/Turn-scripting-capabilities-on-or-off-1f2c515f-5d7e-448a-9fd7-835da935584f
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart", "SharePointFullPage"],
+  "supportsThemeVariants": false,
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Advanced
+    "group": { "default": "Advanced" },
+    "title": { "default": "SovaPageHeader" },
+    "description": { "default": "This web part is used for custom page header" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "backgroundType": 1,
+	  "withVerticalSection": false,
+	  "overlayPosition": 0,
+	  "imageWidthType": 1,
+	  "imageWidthPercentage": 100,
+	  "imageWidthPixels": 100,
+	  "imageHeightType": 2,
+	  "imageHeightPercentage":100,
+	  "imageHeightPixels": 200,
+	  "imageMinWidthType":0,
+	  "imageMinWidthPercentage": 100,
+	  "imageMinWidthPixels": 100,
+	  "imageMinHeightType": 2,
+	  "imageMinHeightPercentage": 0,
+	  "imageMinHeightPixels": 200,
+
+	  "paddingTop": 32,
+	  "paddingLeft": 32,
+	  "paddingRight": 32,
+
+	  "overlayWidthType": 2,
+	  "overlayWidthPixels": 300,
+	  "overlayWidthPercentage": 50,
+	  "overlayHeightType": 2,
+	  "overlayHeightPixels": 150,
+	  "overlayHeightPercentage": 50,
+
+	  "overlayMinWidthType": 0,
+	  "overlayMinWidthPixels": 300,
+	  "overlayMinWidthPercentage": 50,
+	  "overlayMinHeightType": 0,
+	  "overlayMinHeightPixels": 150,
+	  "overlayMinHeightPercentage": 50,
+
+	  "backgroundColor": "#660000",
+
+	  "overlayBackgroundColor": "#000000",
+	  "borderRadius": 0,
+
+	  "HTMLContentToDisplay": "%%PAGETITLE%%"
+	}
+  }]
+}
