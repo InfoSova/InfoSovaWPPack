@@ -18,6 +18,7 @@ In that case, you probably know how to work with SPFx solutions, but here are so
 
 The following web parts are included in the solution:
 - **Heading** - this web part can be used to create headers for your columns with data ([READ MORE](gitHubAssets/README-HEADING.md))
+- **Page header** - this web part provides alternative way to create custom page header ([READ MORE](gitHubAssets/README-PAGEHEADER.md))
 - **Popup** - this web part is used to display a popup on a page. Popup can be activated on button click or automatically ([READ MORE](gitHubAssets/README-POPUP.md))
 - **Content** - this web part can be used for many different things. It can be used to display greetings, alerts, HTML content and even provide you with interesting design solutions ([READ MORE](gitHubAssets/README-CONTENT.md))
 
