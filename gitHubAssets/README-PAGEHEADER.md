@@ -7,9 +7,15 @@ Web part mimics the behavior of standard banner web part, so the overlay follows
 
 Below you can see two pages that use InfoSova Page header web part.
 
-<img src= "ScreenPageHeader1.png" alt="Example of the Page Header web part 1" style="box-shadow: 2px 2px 6px 0px rgba(128, 128, 128, 0.80);">
-
-<img src= "ScreenPageHeader2.png" alt="Example of the Page Header web part 2" style="box-shadow: 2px 2px 6px 0px rgba(128, 128, 128, 0.80);">
+<table>
+<tr><td>
+<img src= "ScreenPageHeader1.png" alt="Example of the Page Header web part 1" style="border: 2px solid grey;">
+</td>
+<td>
+<img src= "ScreenPageHeader2.png" alt="Example of the Page Header web part 2" style="border: 2px solid grey;">
+</td>
+</tr>
+</table>
 
 ![Example of the Page Header web part 1](ScreenPageHeader1.png)
 
