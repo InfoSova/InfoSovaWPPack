@@ -8,7 +8,7 @@ General technical information is available [HERE](gitHubAssets/README-TECHNICAL.
 
 ## How to get this web part package
 
-To use this package you can download the [SPPKG file](sharepoint/solution/InfoSovaWPPack.sppkg).<br/>
+To use this package you can download the [SPPKG file](sharepoint/solution/InfoSovaWPPack.sppkg) (click the button on right top "Download raw file").<br/>
 You can also build the package yourself, since the entire source code is available here.
 In that case, you probably know how to work with SPFx solutions, but here are some links with some info:
 - [Set up your SharePoint Framework development environment](https://learn.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment)
