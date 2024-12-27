@@ -4,13 +4,9 @@ Content web part is the most complex in the package.
 
 **For typical users** it provides the ability to display standard elements like greetings, banners and alerts.
 
-**For advanced users**, people with HTML and CSS experience can embed custom HTML content on the page. They can embed external HTML content (so-called widgets) provided by external services (stock quotes, weather information, exchange rates...). Advanced users can also user negative margins on the element (although margins are primarily used for manipulating spacing around standard greeting or alert elements). If you are skilled with HTML and CSS you might be able to create some interesting effects.<br/>
+**For advanced users**, people with HTML and CSS experience can embed custom HTML content on the page. They can embed external HTML content (so-called widgets) provided by external services (stock quotes, weather information, exchange rates...).<br/>
 > [!CAUTION]
 > When you turn on a checkbox **"Shrink web part?"** this web part modifies HTML on the page outside of the web part's context to deal with "margin collapse" and provide better look and feel. Use this option if you know what you are doing.
-
-**You can use negative margin for this element, but should you?**<br/>
-Manipulating an element's margins can move the element where other page elements are located. Negative margin is just a negative margin, the only problem that could happen is that the visual result is not what you expect.<br/>
-A typical issue is when you have an automatically resizeable element on which you want to set an overlay. Always try to resize the browser window to see if the visual result is satisfactory.
 
 ## Some of the use cases for this web part
 
@@ -29,11 +25,6 @@ Embedding HTML content on the page. HTML content with styles can be directly ent
 **For an ADVANCED user**<br/>
 You can embed content from other online sites (with limitations).<br/>
 ![Example 4 of the Content web part](ScreenContent4.png)
-
-**For an ADVANCED user**<br/>
-A custom overlay with HTML over an image (top margin modification).<br/>
-![Example 5 of the Content web part](ScreenContent5.png)
-
 
 ## Web part customization
 
